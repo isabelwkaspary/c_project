@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+  
+int jogador, computador;
+int vitorias_jogador = 0, vitorias_computador = 0;
+char jogar_novamente;
+    
+ srand(time(NULL));
+
+do {
+    
+computador = rand() % 3 + 1;
+    
+printf("Escolha:\n");
+printf("1 - Pedra\n");
+printf("2 - Papel\n");
+printf("3 - Tesoura\n");
+scanf("%d", &jogador);
+
+if (jogador == 1)
+  printf("Você escolheu Pedra!\n");
+else if (jogador == 2)
+  printf("Você escolheu Papel!\n");
+else
+  printf("Você escolheu Tesoura!\n");
+
+if (computador == 1)
+  printf("Computador escolheu Pedra\n");
+else if (computador == 2)
+  printf("Computador escolheu Papel!\n");
+else
+  printf("Computador escolheu Tesoura!\n");
+  
+if ((jogador == 1 && computador == 3) || (jogador == 2 && computador == 1) || (jogador == 3 && computador == 2)) {
+  printf("Você ganhou!\n");
+  vitorias_jogador++;
+} else if ((jogador == 1 && computador == 2) || (jogador == 2 && computador == 3) || (jogador == 3 && computador == 1)) {
+   printf("Você perdeu!\n");
+    vitorias_computador++;
+} else {
+ printf("Empate!\n");
+}
+  
+printf("Deseja jogar novamente? (S/N): ");
+scanf(" %c", &jogar_novamente);
+} while (jogar_novamente == 'S' || jogar_novamente == 's');  
+  
+printf("Resultados finais:\n");
+printf("Você: %d vitórias\n", vitorias_jogador);
+printf("Computador: %d vitórias\n", vitorias_computador);
+    
+return 0;
+}
